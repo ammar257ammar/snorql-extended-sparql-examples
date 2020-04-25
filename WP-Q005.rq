@@ -1,0 +1,13 @@
+#Get all the genes on a particular pathway
+
+PREFIX wp:      <http://vocabularies.wikipathways.org/wp#>
+PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+select distinct ?pathway (str(?label) as ?geneProduct) where {
+    ?geneProduct a wp:GeneProduct . 
+    ?geneProduct rdfs:label ?label .
+    ?geneProduct dcterms:isPartOf ?pathway .
+    ?pathway a wp:Pathway .
+    ?pathway dcterms:identifier "WP1560"^^xsd:string . 
+}

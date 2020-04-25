@@ -1,0 +1,16 @@
+#Get all groups and complexes containing a particular gene
+
+PREFIX wp:      <http://vocabularies.wikipathways.org/wp#>
+PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dcterms: <http://purl.org/dc/terms/>
+
+SELECT DISTINCT ?pathway (str(?label) as ?geneProduct)
+WHERE {
+    ?geneProduct a wp:GeneProduct . 
+    ?geneProduct rdfs:label ?label .
+    ?geneProduct dcterms:isPartOf ?pathway .
+
+    FILTER NOT EXISTS { ?pathway a wp:Interaction } .
+    FILTER NOT EXISTS { ?pathway a wp:Pathway } .
+    FILTER regex(str(?label), "CYP"). 
+}

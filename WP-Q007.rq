@@ -1,0 +1,10 @@
+#Get all pathways with a particular ontology term
+
+PREFIX obo: <http://purl.obolibrary.org/obo/>
+
+SELECT ?pathway (str(?titleLit) AS ?title)
+WHERE {
+  ?pathwayRDF wp:ontologyTag obo:PW_0000296 ;
+              foaf:page ?pathway ;
+              dc:title ?titleLit .
+}

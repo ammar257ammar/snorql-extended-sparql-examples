@@ -1,0 +1,11 @@
+#Get all ontology terms for a particular pathway
+
+SELECT (?o as ?pwOntologyTerm) (str(?titleLit) as ?title) ?pathway 
+WHERE {
+  ?pathwayRDF wp:ontologyTag ?o ;
+    foaf:page ?pathway ;
+    dc:title ?titleLit ;
+    dcterms:identifier "WP1560"^^xsd:string . 
+
+  FILTER (! regex(str(?pathway), "group"))
+}

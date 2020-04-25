@@ -1,0 +1,7 @@
+#Count the number of pathways per ontology term
+
+SELECT DISTINCT ?pwOntologyTerm count(?pwOntologyTerm) as ?pathwayCount
+ WHERE {
+	?pathwayRDF wp:ontologyTag ?pwOntologyTerm .
+ }
+ ORDER BY DESC(?pathwayCount)

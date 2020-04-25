@@ -1,0 +1,9 @@
+#Get all Reactome pathways
+
+PREFIX cur: <http://vocabularies.wikipathways.org/wp#Curation:>
+
+SELECT DISTINCT ?pathway (str(?titleLit) as ?title)
+WHERE {
+  ?pathway wp:ontologyTag cur:Reactome_Approved ;
+           dc:title ?titleLit .
+}
