@@ -1,0 +1,8 @@
+#We can get all pathway properties with:
+
+prefix wp:      <http://vocabularies.wikipathways.org/wp#>
+
+select distinct ?p where {
+  ?mb a wp:Pathway ;
+    ?p [] .
+}

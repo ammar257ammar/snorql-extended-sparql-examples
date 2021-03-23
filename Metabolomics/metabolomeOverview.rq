@@ -1,0 +1,9 @@
+#The following queries provide an overview of the Metabolome captures by WikiPathways.
+#The key type for metabolites is the wp:Metabolite. We can see all available properties with:
+
+prefix wp:      <http://vocabularies.wikipathways.org/wp#>
+
+select distinct ?p where {
+  ?mb a wp:Metabolite ;
+    ?p [] .
+}

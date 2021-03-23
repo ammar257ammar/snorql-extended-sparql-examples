@@ -1,0 +1,13 @@
+#HMDB, ChEBI, and KEGG are the main data sources for identifiers. InChI/InChIKey should also be there but is missing. 
+#A big curation process in January 2013 ensured that "PubChem compound" is now used as data source for PubChem CIDs.
+
+prefix wp:      <http://vocabularies.wikipathways.org/wp#>
+prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#>
+prefix dcterms:  <http://purl.org/dc/terms/>
+
+select str(?datasource) as ?source count(distinct ?identifier) as ?count
+where {
+  ?mb a wp:Metabolite ;
+    dc:source ?datasource ;
+    dc:identifier ?identifier .
+} order by desc(?count)
