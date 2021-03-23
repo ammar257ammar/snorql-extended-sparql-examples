@@ -1,0 +1,8 @@
+SELECT DISTINCT ?pathway ?pubmed 
+WHERE {
+	?pubmed a       wp:PublicationReference . 
+    ?pubmed dcterms:isPartOf ?pathway .
+	?pathway a wp:Pathway .
+    ?pathway dcterms:identifier "WP1560"^^xsd:string . #Replace "WP1560" with WP ID of interest
+}
+ORDER BY ?pathway
